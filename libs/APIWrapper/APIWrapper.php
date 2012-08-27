@@ -2,6 +2,11 @@
 
 namespace grunge\libs\APIWrapper;
 
+/**
+* API Wrapper
+*
+* @author makarov.igor
+*/
 class APIWrapper
 {
     /**
