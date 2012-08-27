@@ -14,7 +14,7 @@ class systemConfig {
      *
      * @var string
      */
-    public static $application_name = "Grunge application";
+    public static $application_name = "Grunge Framework Default Config";
 
     /**
      * Application version
@@ -33,7 +33,7 @@ class systemConfig {
      * @example console|web|mixed
      * @var srting
      */
-    public static $application_type = 'mixed';
+    public static $application_type = 'console';
 
     /**
      * Enabled modules
@@ -42,9 +42,7 @@ class systemConfig {
      *
      * @var type
      */
-    public static $enabledModules = array(
-        'simple',
-    );
+    public static $enabledModules = [];
 
     /**
      *
@@ -53,7 +51,7 @@ class systemConfig {
      *
      * @var string
      */
-    public static $pathToSystem;
+    public static $pathToSystem = '';
 
     /**
      *
@@ -62,7 +60,7 @@ class systemConfig {
      *
      * @var string
      */
-    public static $pathToApp;
+    public static $pathToApp = '';
 
     /**
      *
@@ -71,7 +69,7 @@ class systemConfig {
      *
      * @var string
      */
-    public static $pathToRoot;
+    public static $pathToRoot = '';
 
     /**
      *
@@ -80,7 +78,7 @@ class systemConfig {
      *
      * @var string
      */
-    public static $pathToTemp;
+    public static $pathToTemp = '';
 
     /**
      * Main output type
@@ -99,7 +97,7 @@ class systemConfig {
      *
      * @var string
      */
-    public static $output_filepath;
+    public static $output_filepath = '';
 
     /**
      * Write data to buffer before output
@@ -117,18 +115,7 @@ class systemConfig {
      *
      * @var array
      */
-    public static $db = array(
-        'default' => array(
-            'type' => 'doctrine',
-            'driver' => 'pdo_mysql',
-            'host' => 'localhost',
-            'port' => '3306',
-            'dbname' => '',
-            'user' => 'root',
-            'password' => '',
-            'charset' => 'UTF8'
-        ),
-    );
+    public static $db = [];
 
     public static $cache = array(
         'default' => array(
@@ -157,25 +144,9 @@ class systemConfig {
      *
      * @var array
      */
-    public static $view = array(
-        'default' => array(
-            'type' => 'quicky',
-            'cache_path' => "/tmp/view_cache"
-        )
-    );
+    public static $view = [];
 
-    public static $searcher = array(
-        'default' => array(
-            'type' => 'elasticSearch',
-            'host' => 'cloud.ilook.ru',
-            'port' => 9200,
-            'transport' => 'HTTP',
-            'index_name' => 'Messages',
-            'type_name' => 'Message'
-        )
-    );
-
-    public static $custom = array();
+    public static $custom = [];
 
     public static function alive()
     {
