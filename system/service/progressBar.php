@@ -120,7 +120,10 @@ class progressBar {
      */
     public function draw() {
         $data = $this->getData();
-        $done = $this->pb_width / 100 * $data['done'];
+        if ($data['done'] > 100) {
+            $data['done'] = 100;
+        }
+        $done = ceil($this->pb_width / 100 * $data['done']);
         if ($done < 1) {
             $done = 1;
         }
