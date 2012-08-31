@@ -1,5 +1,8 @@
 # Grunge framework (PHP5.4+)
 Grunge framework is a lightweight framework to build console applications on PHP5.4+
+
+Published under MIT license.
+
 ## Simple application
 ```php
 <?php
