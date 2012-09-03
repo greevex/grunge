@@ -20,6 +20,6 @@ $my_app = new my_app();
 $my_app->run();
 ````
 
-## Highligths
+## Highlights
 This framework is written on PHP5.4.4 and all constructions that
 was included in framework was tested on speed, memory usage etc.

@@ -84,7 +84,7 @@ class response {
     public function commit()
     {
         \grunge\system\debug\debug::put(
-            '$this->output_buffering lenght = ' . mb_strlen($this->buffer), __METHOD__, 5);
+            '$this->output_buffering length = ' . mb_strlen($this->buffer), __METHOD__, 5);
         if($this->output_buffering) {
             fwrite($this->outputResource, $this->buffer);
             $this->buffer = "";
