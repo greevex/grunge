@@ -3,6 +3,8 @@ Grunge framework is a lightweight framework to build console applications on PHP
 
 Published under MIT license.
 
+[![Build Status](https://secure.travis-ci.org/greevex/grunge.png)](http://travis-ci.org/greevex/grunge)
+
 ## Simple application
 ```php
 <?php
