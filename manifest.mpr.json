@@ -3,7 +3,7 @@
     "description" : "Grunge console application framework",
     "package" : {
         "path" : "/",
-        "init" : "_pharinit.php",
+        "init" : "grunge.php",
         "version" : "2.0"
     },
     "meta" : {
