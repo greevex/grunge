@@ -2,7 +2,9 @@
 
 namespace grunge\system\exceptions;
 
-class gException extends \Exception {
+class gException
+extends \Exception
+{
 
     /**
      * Exception name
@@ -71,7 +73,7 @@ class gException extends \Exception {
     }
 
     public static function errorHandler($errorNumber, $errorMessage, $errorFile, $errorLine) {
-        \grunge\system\debug\debug::put("EXC:{$errorMessage} in {$errorFile}:{$errorLine}", __METHOD__);
+        print "Exception: {$errorMessage} in {$errorFile}:{$errorLine}\n";
         throw new self($errorMessage, $errorNumber, $errorLine, $errorFile);
     }
 
