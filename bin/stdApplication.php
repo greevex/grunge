@@ -9,5 +9,8 @@ namespace grunge\bin;
 class stdApplication
 extends \grunge\system\core\consoleApplication
 {
-    public function handle() { }
+    public function handle()
+    {
+
+    }
 }
