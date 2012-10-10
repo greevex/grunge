@@ -39,6 +39,19 @@ class mongoDb {
         $this->db->resetError();
     }
 
+    public function save($collection, $object)
+    {
+        if(!isset($data['_id'])) {
+            $data['_id'] = new \MongoId();
+        } elseif(!is_object($data['_id'])) {
+            $data['_id'] = new \MongoId($data['_id']);
+        }
+        return $this->db
+            ->selectCollection($collection)
+            ->save($object);
+    }
+
+
     public function insert($collection, &$data, $options = [])
     {
         if(!isset($data['_id'])) {
@@ -80,7 +93,7 @@ class mongoDb {
     {
         $data = $this->db
                     ->selectCollection($collection)
-                    ->update($criteria, ['$set' => $update_data], ($createIfNonExists ? ['upsert' => true] : []));
+                    ->update($criteria, $update_data, ($createIfNonExists ? ['upsert' => true] : []));
         return $data;
     }
 
