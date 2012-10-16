@@ -49,7 +49,7 @@ class memcacheCache implements \grunge\system\interfaces\cache {
     
     public function set($key, $value, $expire = 0)
     {
-        $this->memcache->set($key, $value, $expire);
+        return $this->memcache->set($key, $value, $expire);
     }
     
     public function get($key)
