@@ -47,9 +47,9 @@ class mongoCache implements \grunge\system\interfaces\cache {
     public function set($key, $value, $expire = 0)
     {
         $data = array(
-            'key' => $key,
-            'value' => $value,
-            'expire' => $expire
+            'k' => $key,
+            'v' => $value,
+            'e' => $expire
         );
         return !!$this->mongo->save($this->collection_name, $data);
     }
@@ -57,21 +57,21 @@ class mongoCache implements \grunge\system\interfaces\cache {
     public function get($key)
     {
         $value = $this->mongo
-                ->selectOne($this->collection_name, array('key' => $key));
-        return ($value !== null) ? $value['value'] : null;
+                ->selectOne($this->collection_name, array('k' => $key), ['v']);
+        return isset($value['v']) ? $value['v'] : null;
     }
 
     public function exists($key)
     {
         return ($this->mongo->selectOne($this->collection_name, array(
-                    'key' => $key
+                    'k' => $key
                 ), ['_id']) !== null);
     }
 
     public function delete($key)
     {
         return $this->mongo->remove($this->collection_name, array(
-            'key' => $key
+            'k' => $key
         ));
     }
 
