@@ -51,12 +51,7 @@ class mongoCache implements \grunge\system\interfaces\cache {
             'value' => $value,
             'expire' => $expire
         );
-        $this->mongo->remove($this->collection_name, array('key' => $key));
-        return !!$this->mongo->insert($this->collection_name, $data, true);
-        /**
-        * @todo strange error on update-create [don't creating row]
-        */
-        //return $this->mongo->update($this->collection_name, array('key' => $key), array('$set' => $data), true);
+        return !!$this->mongo->save($this->collection_name, $data);
     }
 
     public function get($key)
@@ -70,28 +65,18 @@ class mongoCache implements \grunge\system\interfaces\cache {
     {
         return ($this->mongo->selectOne($this->collection_name, array(
                     'key' => $key
-                )) !== null);
+                ), ['_id']) !== null);
     }
 
     public function delete($key)
     {
-        if($key == '*') {
-            return $this->mongo
-                ->remove($this->collection_name, array(
-                '_id' => array(
-                    '$gt' => 0
-                )
-            ));
-        } else {
-            return $this->mongo
-                    ->remove($this->collection_name, array(
-                        'key' => $key
-                    ));
-        }
+        return $this->mongo->remove($this->collection_name, array(
+            'key' => $key
+        ));
     }
 
     public function clear()
     {
-        return false;
+        return $this->mongo->remove($this->collection_name, array());
     }
 }
