@@ -21,7 +21,7 @@ class mongoCache implements \grunge\system\interfaces\cache {
     * @var \grunge\system\orm\mongoDb
     */
     private $mongo;
-    private $collection_name = "cache";
+    private $collection_name = "storage";
 
     public function commit() {
 
