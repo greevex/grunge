@@ -13,7 +13,7 @@ use \grunge\system\systemConfig;
  *
  * @author GreeveX <greevex@gmail.com>
  */
-class memcacheCache
+class redisCache
 implements \grunge\system\interfaces\cache {
     
     private $autoCommit = true;
