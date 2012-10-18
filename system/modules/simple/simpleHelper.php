@@ -78,11 +78,12 @@ class simpleHelper {
      */
     protected function getMongo($configName = 'mongo')
     {
-        if($this->mongo == null) {
-            $this->mongo = \grunge\system\orm\database::factory($configName)
+        static $mongo = [];
+        if(!isset($mongo[$configName])) {
+            $mongo[$configName] = \grunge\system\orm\database::factory($configName)
                 ->getBackend();
         }
-        return $this->mongo;
+        return $mongo[$configName];
     }
 
     /**
