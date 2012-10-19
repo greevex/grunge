@@ -80,8 +80,9 @@ implements \grunge\system\interfaces\ormdb {
      */
     public static function factory($configName = 'default')
     {
-        \grunge\system\debug\debug::put("configName:{$configName}", __METHOD__, 8);
+        \grunge\system\debug\debug::put("Request configName:{$configName}", __METHOD__, 8);
         if(!isset(self::$instance[$configName])) {
+            \grunge\system\debug\debug::put("Loading configName:{$configName}", __METHOD__, 8);
             self::$instance[$configName] = new self($configName);
         }
         return self::$instance[$configName];
