@@ -76,26 +76,8 @@ class simpleHelper {
     /**
      * @return \grunge\system\orm\mongoDb
      */
-    protected function getMongo($configName = 'mongo')
+    protected function getMongo($configName = 'default')
     {
-        static $mongo = [];
-        if(!isset($mongo[$configName])) {
-            $mongo[$configName] = \grunge\system\orm\database::factory($configName)
-                ->getBackend();
-        }
-        return $mongo[$configName];
+        return \grunge\system\orm\database::factory($configName)->getBackend();
     }
-
-    /**
-     * @param string $configName
-     * @return \grunge\system\searchers\elasticSearch
-     */
-    protected function getElastic($configName = 'default')
-    {
-        if($this->es == null) {
-            $this->es = \grunge\system\searchers\searcher::factory($configName);
-        }
-        return $this->es;
-    }
-
 }
