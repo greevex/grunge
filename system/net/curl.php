@@ -52,6 +52,7 @@ class curl
     public function selectInterface($interface)
     {
         $this->options[CURLOPT_INTERFACE] = $interface;
+        curl_setopt($this->curl, CURLOPT_INTERFACE, $interface);
     }
 
     public function prepare($url, $params = null, $method = null)
