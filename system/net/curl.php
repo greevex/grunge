@@ -110,7 +110,11 @@ class curl
         if (($curl_errno = curl_errno($this->curl)) != CURLE_OK) {
             $curl_error = curl_error($this->curl);
             if(strpos($curl_error, 'bind') !== false) {
-                $this->selectInterface("venet0:0");
+                static $default_ip;
+                if($default_ip == null) {
+                    $default_ip = trim(shell_exec("ip a s | grep 'inet' | grep -v '127.0.0' | grep -v '::' | awk '{print $2}' | sed 's#/[0-9][0-9]##' | head -n 1"));
+                }
+                $this->selectInterface($default_ip);
                 $result = $this->execute();
             } else {
                 curl_close($this->curl);
