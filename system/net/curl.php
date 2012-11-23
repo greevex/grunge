@@ -25,6 +25,23 @@ class curl
         CURLOPT_COOKIEFILE          => '/tmp/global_cookie.sds',
     );
 
+    /**
+     * @param string        $type       http - for HTTP type & socks5 for SOCKS5 proxy type
+     * @param string        $ip
+     * @param int           $port
+     * @param null|string   $user
+     * @param null|string   $pass
+     * @param string        $auth_type  ntlm - use NTLM auth type, otherwise basic being used
+     */
+    public function useProxy($initial, $proxy_type = 'http', $auth_type = 'basic')
+    {
+        $this->options[CURLOPT_PROXYTYPE] = $proxy_type == 'socks5' ? CURLPROXY_SOCKS5 : CURLPROXY_HTTP;
+        $this->options[CURLOPT_PROXY] = $initial;
+        if(strpos($initial, '@') !== false) {
+            $this->options[CURLOPT_PROXYAUTH] = $auth_type == 'ntlm' ? CURLAUTH_NTLM : CURLAUTH_BASIC;
+        }
+    }
+
     public function setVerbose($verbose = 1)
     {
         $this->options[CURLOPT_VERBOSE] = $verbose;
