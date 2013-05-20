@@ -1,0 +1,3 @@
+[submodule "mprf-sds"]
+	path = mprf-sds
+	url = git@gitlab.infostars.ru:mprf-sds
