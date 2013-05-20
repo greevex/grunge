@@ -20,6 +20,7 @@ system\debug\debug::init();
 system\debug\debug::put("Loading system", __FILE__);
 system\debug\debug::put("Loading fileLoader", __FILE__);
 
+require realpath(GRUNGE_PATH . '/mprf-sds/load.php');
 require realpath(GRUNGE_PATH . '/system/service/fileLoader.php');
 \grunge\system\service\fileLoader::registerSpl();
 set_error_handler(array('\\grunge\\system\\exceptions\\gException', 'errorHandler'), E_ALL);
